@@ -32,7 +32,7 @@ public class Home extends JFrame implements ActionListener {
         add.addActionListener(this);
         image.add(add);
         
-        view = new JButton("View Employee");
+        view = new JButton("View Employees");
         view.setBounds(820, 80, 150, 40);
         view.addActionListener(this);
         image.add(view);
@@ -56,9 +56,11 @@ public class Home extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == add) {
             setVisible(false);
-            new AddEmployee ();
+            new AddEmployee();
             
         } else if (ae.getSource() == view) {
+            setVisible(false);
+            new ViewEmployee();
             
         } else if (ae.getSource() == update) {
             
