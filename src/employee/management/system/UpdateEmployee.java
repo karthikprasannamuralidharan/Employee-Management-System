@@ -1,4 +1,3 @@
-
 package employee.management.system;
 
 import java.awt.*;
@@ -6,17 +5,17 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.sql.*;
 
-public class UpdateEmployee extends JFrame implements ActionListener{
-    
-    JTextField tfeducation, tffname, tfsalary, tfaddress, tfphone, tfemail, tfdesignation, tfaadhar ;
+public class UpdateEmployee extends JFrame implements ActionListener {
+
+    JTextField tfeducation, tffname, tfsalary, tfaddress, tfphone, tfemail, tfdesignation, tfaadhar;
     JLabel lblempId;
     JButton add, back;
     String empId;
 
     public UpdateEmployee(String empId) {
-        
+
         this.empId = empId;
-        
+
         // Set up the frame properties
         getContentPane().setBackground(Color.white);
         setLayout(null);
@@ -26,7 +25,7 @@ public class UpdateEmployee extends JFrame implements ActionListener{
         heading.setBounds(320, 30, 500, 50);
         heading.setFont(new Font("serif", Font.BOLD, 20));
         add(heading);
-        
+
         //User Name
         JLabel labelname = new JLabel("Name");
         labelname.setBounds(50, 150, 150, 30);
@@ -36,7 +35,7 @@ public class UpdateEmployee extends JFrame implements ActionListener{
         JLabel lblname = new JLabel();
         lblname.setBounds(200, 150, 150, 30);
         add(lblname);
-        
+
         //Father Name
         JLabel labelfname = new JLabel("Father's Name");
         labelfname.setBounds(400, 150, 150, 30);
@@ -46,17 +45,17 @@ public class UpdateEmployee extends JFrame implements ActionListener{
         tffname = new JTextField();
         tffname.setBounds(600, 150, 150, 30);
         add(tffname);
-        
+
         //DOB
         JLabel labeldob = new JLabel("Date of Birth");
         labeldob.setBounds(50, 200, 150, 30);
         labeldob.setFont(new Font("serif", Font.PLAIN, 20));
         add(labeldob);
-        
+
         JLabel lbldob = new JLabel();
         lbldob.setBounds(200, 200, 150, 30);
         add(lbldob);
-        
+
         //Salary
         JLabel labelsalary = new JLabel("Salary");
         labelsalary.setBounds(400, 200, 150, 30);
@@ -66,7 +65,7 @@ public class UpdateEmployee extends JFrame implements ActionListener{
         tfsalary = new JTextField();
         tfsalary.setBounds(600, 200, 150, 30);
         add(tfsalary);
-        
+
         //Address
         JLabel labeladdress = new JLabel("Address");
         labeladdress.setBounds(50, 250, 150, 30);
@@ -76,7 +75,7 @@ public class UpdateEmployee extends JFrame implements ActionListener{
         tfaddress = new JTextField();
         tfaddress.setBounds(200, 250, 150, 30);
         add(tfaddress);
-        
+
         //Phone
         JLabel labelphone = new JLabel("Phone");
         labelphone.setBounds(400, 250, 150, 30);
@@ -86,17 +85,17 @@ public class UpdateEmployee extends JFrame implements ActionListener{
         tfphone = new JTextField();
         tfphone.setBounds(600, 250, 150, 30);
         add(tfphone);
-        
+
         //Email
         JLabel labelemail = new JLabel("Email");
         labelemail.setBounds(50, 300, 150, 30);
         labelemail.setFont(new Font("serif", Font.PLAIN, 20));
         add(labelemail);
 
-        tfemail  = new JTextField();
+        tfemail = new JTextField();
         tfemail.setBounds(200, 300, 150, 30);
         add(tfemail);
-        
+
         //Education
         JLabel labeleducation = new JLabel("Highest Education");
         labeleducation.setBounds(400, 300, 150, 30);
@@ -107,7 +106,7 @@ public class UpdateEmployee extends JFrame implements ActionListener{
         tfeducation.setBackground(Color.WHITE);
         tfeducation.setBounds(600, 300, 150, 30);
         add(tfeducation);
-        
+
         //Designation
         JLabel labeldesignation = new JLabel("Designation");
         labeldesignation.setBounds(50, 350, 150, 30);
@@ -117,7 +116,7 @@ public class UpdateEmployee extends JFrame implements ActionListener{
         tfdesignation = new JTextField();
         tfdesignation.setBounds(200, 350, 150, 30);
         add(tfdesignation);
-        
+
         //Aadhar
         JLabel labelaadhar = new JLabel("Aadhar Number");
         labelaadhar.setBounds(400, 350, 150, 30);
@@ -127,21 +126,21 @@ public class UpdateEmployee extends JFrame implements ActionListener{
         JLabel lblaadhar = new JLabel();
         lblaadhar.setBounds(600, 350, 150, 30);
         add(lblaadhar);
-        
+
         //EmpID
         JLabel labelempId = new JLabel("Employee ID");
         labelempId.setBounds(50, 400, 150, 30);
         labelempId.setFont(new Font("serif", Font.PLAIN, 20));
         add(labelempId);
-        
+
         lblempId = new JLabel();
         lblempId.setBounds(200, 400, 150, 30);
         lblempId.setFont(new Font("serif", Font.PLAIN, 20));
         add(lblempId);
-        
+
         try {
             Conn c = new Conn();
-            String query = "select * from employee where empId = '"+empId+"'";
+            String query = "select * from employee where empId = '" + empId + "'";
             ResultSet rs = c.s.executeQuery(query);
             while (rs.next()) {
                 lblname.setText(rs.getString("name"));
@@ -155,12 +154,11 @@ public class UpdateEmployee extends JFrame implements ActionListener{
                 lblaadhar.setText(rs.getString("aadhar"));
                 lblempId.setText(rs.getString("empId"));
                 tfdesignation.setText(rs.getString("designation"));
-                
-                
+
             }
         } catch (Exception e) {
         }
-        
+
         //Add Button
         add = new JButton("Update Details");
         add.setBounds(250, 550, 150, 40);
@@ -168,7 +166,7 @@ public class UpdateEmployee extends JFrame implements ActionListener{
         add.setBackground(Color.BLACK);
         add.setForeground(Color.WHITE);
         add(add);
-        
+
         //Back Button
         back = new JButton("Back");
         back.setBounds(450, 550, 150, 40);
@@ -176,36 +174,35 @@ public class UpdateEmployee extends JFrame implements ActionListener{
         back.setBackground(Color.BLACK);
         back.setForeground(Color.WHITE);
         add(back);
-        
+
         // Set frame size, location, and visibility
         setSize(900, 700);
         setLocation(300, 50);
         setVisible(true);
-        
+
     }
-    
-    public void actionPerformed(ActionEvent ae){
+
+    public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == add) {
             String fname = tffname.getText();
             String salary = tfsalary.getText();
             String address = tfaddress.getText();
             String phone = tfphone.getText();
-            String email = tfemail .getText();
+            String email = tfemail.getText();
             String education = tfeducation.getText();
             String designation = tfdesignation.getText();
-           
+
             try {
                 Conn conn = new Conn();
-                String query = "update employee set fname = '"+fname+"', salary = '"+salary+"', address = '"+address+"', phone = '"+phone+"', email = '"+email+"', education = '"+education+"', designation = '"+designation+"' where empId = '"+empId+"'" ;
+                String query = "update employee set fname = '" + fname + "', salary = '" + salary + "', address = '" + address + "', phone = '" + phone + "', email = '" + email + "', education = '" + education + "', designation = '" + designation + "' where empId = '" + empId + "'";
                 conn.s.executeUpdate(query);
                 JOptionPane.showMessageDialog(null, "Details added successfully");
                 setVisible(false);
                 new Home();
-                        
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            
 
         } else {
             //Back Button
@@ -213,13 +210,11 @@ public class UpdateEmployee extends JFrame implements ActionListener{
             new Home();
         }
     }
-    
-    
-    
+
     public static void main(String[] args) {
-        
+
         new UpdateEmployee("");
-        
+
     }
-    
+
 }
